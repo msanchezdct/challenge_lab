@@ -24,6 +24,7 @@ jobs:
         if: failure()
         run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
 
+
   approve-PR:
     needs: scan-and-quality-gate
     runs-on: ubuntu-latest
@@ -35,6 +36,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: 1
+
+  close-PR:
+    if: ${{ scan-and-quality-gate.steps.sonarqube-quality-gate-check.outputs.quality-gate-status == FAILED }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo SUCCES
+    
+    
       
 
       
