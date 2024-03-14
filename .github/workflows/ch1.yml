@@ -1,4 +1,4 @@
-name: first action
+name: Challenge 1
 on:
   workflow_dispatch:
 
