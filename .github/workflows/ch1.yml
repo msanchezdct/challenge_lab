@@ -57,9 +57,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        comment-message: "Issue ${{ steps.create.outputs.issue }}"
-        # Delete previous comment
-        #delete-previous-comment: # optional
+        description-message: |
+          ----
+          ### Live Preview
+          :rocket: Released to https://${{steps.environment.outputs.deployUrl}}
+          Issue ${{ steps.create.outputs.issue }}
             
           
     
