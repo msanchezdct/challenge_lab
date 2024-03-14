@@ -22,6 +22,11 @@ jobs:
     #  env:
     #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     #    SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} 
+    - name: getPrUrl
+      id: pr-url
+      uses: ammaratef45/pr-url-action@v1
+    - name: display
+      run: echo ${{ steps.pr-url.outputs.url }}
     
     - name: Jira Login
       uses: atlassian/gajira-login@v3
@@ -38,14 +43,19 @@ jobs:
         # Type of the issue to be created. Example: 'Incident'
         issuetype: "Task"
         # Issue summary
-        summary: "PR Created in ${{ github.event.repository }}"
+        summary: "PR Created in ${{ github.repository }}"
         # Issue description
-        description: "A PR was created by ${{ github.event.actor }} (${{ github.event.id }})"
+        description: |
+          A PR was created by ${{ github.actor }} 
+          URL: ${{ steps.pr-url.outputs.url }}
+          PR: (${{ github.id }})
     
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
 
     - uses: Jerome1337/comment-pull-request@v1.0.4
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         comment-message: "Issue ${{ steps.create.outputs.issue }}"
         # Delete previous comment
