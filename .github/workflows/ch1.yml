@@ -36,6 +36,7 @@ jobs:
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         
     - name: Jira Create issue
+      id: create
       uses: atlassian/gajira-create@v3
       with:
         # Key of the project
@@ -60,8 +61,7 @@ jobs:
         description-message: |
           ----
           ### Live Preview
-          :rocket: Released to https://${{steps.environment.outputs.deployUrl}}
-          Issue ${{ steps.create.outputs.issue }}
+          :rocket: Jira Task ${{ steps.create.outputs.issue }} created
             
           
     
