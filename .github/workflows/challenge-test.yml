@@ -4,6 +4,8 @@ on:
 jobs:
   scan-and-quality-gate:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.sonarqube-quality-gate-check.outputs.test }}
     steps:
       - uses: actions/checkout@v4
 
@@ -38,7 +40,7 @@ jobs:
           number: 1
 
   close-PR:
-    if: ${{ scan-and-quality-gate.steps.sonarqube-quality-gate-check.outputs.quality-gate-status == FAILED }}
+    if: ${{ needs.scan-and-quality-gate.outputs.output1 == 'FAILED' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo SUCCES
