@@ -22,4 +22,36 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} 
+    
+    - name: Jira Login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        
+    - name: Jira Create issue
+      uses: atlassian/gajira-create@v3
+      with:
+        # Key of the project
+        project: ${{ vars.JIRA_PROJECT }}
+        # Type of the issue to be created. Example: 'Incident'
+        issuetype: "Task"
+        # Issue summary
+        summary: "PR Created"
+        # Issue description
+        description: "A PR was created"
+    
+    - name: Log created issue
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+
+    - uses: Jerome1337/comment-pull-request@v1.0.4
+      with:
+        comment-message: "Issue ${{ steps.create.outputs.issue }}"
+        # Delete previous comment
+        #delete-previous-comment: # optional
+            
+          
+    
+    
 
