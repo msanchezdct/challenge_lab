@@ -40,7 +40,7 @@ jobs:
         # Issue summary
         summary: "PR Created in ${{ github.event.repository }}"
         # Issue description
-        description: "A PR was created by ${{ }}"
+        description: "A PR was created by ${{ github.event.actor }} (${{ github.event.id }})"
     
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
