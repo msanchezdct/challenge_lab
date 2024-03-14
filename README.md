@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Jedi DevOps: El challenge de un Devops Épico
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+¡Bienvenido, joven padawan, al changellenge donde te convertiras en un Jedi devops! Aquí encontrarás los pasos que esperemos que puedas superar para convertirte en un maestro de las galaxias en el arte de la integración y despliegue continuo.
 
-## Available Scripts
+![Astronauta teralco](images/espacio1.png)
 
-In the project directory, you can run:
+## Paso 1: Despliega tus poderes con una rama nueva
 
-### `npm start`
+Primero, crea una rama develop desde la rama principal (main). ¡Que la Fuerza te acompañe!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Paso 2: Enfrenta la prueba de la PR
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Crea una Pull Request desde develop a main y prepárate para el combate. ¡Es hora de demostrar tu valía!
 
-### `npm test`
+## Paso 3: Confronta los Quality Gates de Sonar
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+¡Una batalla crucial! Debes crear un workflow para pasar el codigo por Sonar.
 
-### `npm run build`
+- Si los Quality Gates no se cumplen, prepárate para el combate y declina la PR con el poder de la API.
+- Si los Quality Gates son superados, aprueba la PR y crea una tarea en Jira.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Paso 4: Desata el poder del merge y cierra la tarea
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Cuando la PR sea fusionada manualmente, desencadena el flujo que llevará tu aplicación a nuevas alturas. Que el código fluya como la Fuerza misma. No olvides cerrar la tarea correspondiente en JIRA para sellar tu victoria y equilibrar la Fuerza y la gestión de proyectos en un solo movimiento.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+¡Y así, nobles guerreros, os convertiréis en verdaderos maestros Jédai del DevOps! Que la Fuerza del Código os acompañe en cada paso de vuestro viaje.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
