@@ -58,7 +58,7 @@ jobs:
         id: create
         uses: atlassian/gajira-create@v3
         with:
-          project: PR
+          project: Innotech-devops-grupo1
           issuetype: Check Aproved PR
           summary: Pendiente de aprobar PullRequest ${{ github.repository }}
           description: Compare branch
