@@ -26,6 +26,14 @@ jobs:
         if: failure()
         run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
 
+      - name: Close Pull
+        if: failure()
+        uses: peter-evans/close-pull@v3
+        with:
+          pull-request-number: 1
+          comment: Auto-closing pull request
+          delete-branch: false
+
 
   approve-PR:
     needs: scan-and-quality-gate
@@ -39,12 +47,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: 1
 
-  close-PR:
-    if: ${{ needs.scan-and-quality-gate.outputs.output1 == 'FAILED' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo SUCCES
-    
     
       
 
