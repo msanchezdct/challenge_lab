@@ -2,7 +2,9 @@
 
 ¡Bienvenido, joven padawan, al changellenge donde te convertiras en un Jedi devops! Aquí encontrarás los pasos que esperemos que puedas superar para convertirte en un maestro de las galaxias en el arte de la integración y despliegue continuo.
 
-![Astronauta teralco](images/espacio2.png)
+<p align="center">
+  <img src="images/espacio2.png" />
+</p>
 
 ## Paso 1: Despliega tus poderes con una rama nueva
 
