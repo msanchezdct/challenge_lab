@@ -15,3 +15,9 @@ jobs:
       run: npm ci
     - name: test
       run: npm test
+    - name: Analizar con Sonar
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} 
+
