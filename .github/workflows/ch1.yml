@@ -38,9 +38,9 @@ jobs:
         # Type of the issue to be created. Example: 'Incident'
         issuetype: "Task"
         # Issue summary
-        summary: "PR Created"
+        summary: "PR Created in ${{ github.event.repository }}"
         # Issue description
-        description: "A PR was created"
+        description: "A PR was created by ${{ }}"
     
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
