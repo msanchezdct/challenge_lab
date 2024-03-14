@@ -18,8 +18,10 @@ Crea una Pull Request desde develop a main y prepárate para el combate. ¡Es ho
 
 ¡Una batalla crucial! Debes crear un workflow para pasar el codigo por Sonar.
 
-- Si los Quality Gates no se cumplen, prepárate para el combate y declina la PR con el poder de la API.
+- Si los Quality Gates no se cumplen, prepárate para el combate y declina la PR.
 - Si los Quality Gates son superados, aprueba la PR y crea una tarea en Jira.
+
+--TIPS:  Para la parte del sonar debes componer dos acciones, una que realice un scan del codigo y otra que obtenga el status del Quality Gates.
 
 ## Paso 4: Desata el poder del merge y cierra la tarea
 
