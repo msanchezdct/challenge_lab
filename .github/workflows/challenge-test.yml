@@ -59,7 +59,7 @@ jobs:
         uses: atlassian/gajira-create@v3
         with:
           project: IDG
-          issuetype: Check Aproved PR
+          issuetype: "Check Aproved PR"
           summary: Pendiente de aprobar PullRequest ${{ github.repository }}
           description: Compare branch
           fields: '{"customfield_10171": "test"}'
