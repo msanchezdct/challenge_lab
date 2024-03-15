@@ -33,9 +33,6 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: snyk.sarif
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ github.token }}
     - name: getPrUrl
       id: pr-url
       uses: ammaratef45/pr-url-action@v1
