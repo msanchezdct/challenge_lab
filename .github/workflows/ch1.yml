@@ -1,0 +1,80 @@
+name: Challenge 1
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  my_job:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: build
+      run: npm ci
+    - name: test
+      run: npm test
+    - name: Analizar con Sonar
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} 
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/node@master
+      continue-on-error: true # To make sure that SARIF upload gets called
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --sarif-file-output=snyk.sarif
+    - name: Upload result to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: snyk.sarif
+    - name: getPrUrl
+      id: pr-url
+      uses: ammaratef45/pr-url-action@v1
+    - name: display
+      run: echo ${{ steps.pr-url.outputs.url }}
+    
+    - name: Jira Login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        
+    - name: Jira Create issue
+      id: create
+      uses: atlassian/gajira-create@v3
+      with:
+        # Key of the project
+        project: ${{ vars.JIRA_PROJECT }}
+        # Type of the issue to be created. Example: 'Incident'
+        issuetype: "Task"
+        # Issue summary
+        summary: "PR Created in ${{ github.repository }}"
+        # Issue description
+        description: |
+          A PR was created by ${{ github.actor }} 
+          URL: ${{ steps.pr-url.outputs.url }}
+          PR: (${{ github.id }})
+    
+    - name: Log created issue
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+
+    - uses: Jerome1337/comment-pull-request@v1.0.4
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        description-message: |
+          ----
+          ### Live Preview
+          :rocket: Jira Task ${{ steps.create.outputs.issue }} created
+            
+          
+    
+    
+
